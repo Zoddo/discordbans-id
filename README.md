@@ -1,14 +1,14 @@
-# discordbans
+# discordbans-id
 A node.js package to check users on Discord Bans.
 
 ## Installation
 ```
-$ npm install --save discordbans
+$ npm install --save discordbans-id
 ```
 
 ## Quick example
 ```js
-const Lookup = require('discordbans').Lookup;
+const Lookup = require('discordbans-id').Lookup;
 const dbans = new Lookup('your_dban_token');
 
 dbans.lookup('123456789123456789').then(r => console.log(r));
@@ -63,5 +63,5 @@ This method returns a `Promise` that will resolve once the response have been ob
 *Note: If something wrong happens during the API request, the promise will be rejected with an appropriate `Error` object.*
 
 ## Issues
-If you want to report a bug or any other issues, please [open an issue on GitHub](https://github.com/Zoddo/discordbans/issues).  
+If you want to report a bug or any other issues, please [open an issue on GitHub](https://github.com/Zoddo/discordbans-id/issues).  
 Pull requests are also welcome ;)
