@@ -33,9 +33,9 @@ new Lookup(token[, options]);
 Argument            |   Type   | Description
 ------------------- | -------- | -----------
 `token`             | string   | Your bans.discord.id API token. To get one, DM `!token` to Discord Bans#0269.
-`options.interval`  | number   | [Optional=1000] The interval between to API requests in ms. Default to 1000ms (1 sec).
+`options.interval`  | number   | [Optional=1000] The interval between to API requests in ms. Default to 1000ms (1Â sec).
 `options.cacheSize` | number   | [Optional=-1] The maximum size of the internal cache. When the cache is full, oldest elements are removed. Set to `0` to disable the cache. Default to `-1` (unlimited).
-`options.cacheLife` | number   | [Optional=3600000] The maximum lifetime of a cached entry. Default to 3600000ms (1 hour).
+`options.cacheLife` | number   | [Optional=3600000] The maximum lifetime of a cached entry. Default to 3600000ms (1Â hour).
 
 #### `lookup` method
 ```js

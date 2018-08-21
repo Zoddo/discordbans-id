@@ -58,7 +58,7 @@ class Lookup {
 			// We cane excute the request now. It will be executed at the end of the event loop
 			this.timeout = setImmediate(() => this.execute());
 		} else {
-			// The last request is too recent. Let's wait a bit before executing the request…
+			// The last request is too recent. Let's wait a bit before executing the requestâ€¦
 			this.timeout = setTimeout(() => this.execute(), (this.last_call + this.interval) - Date.now());
 		}
 	}
@@ -75,7 +75,7 @@ class Lookup {
 			users[user] = {res, rej};
 		}
 
-		// Construct the URL…
+		// Construct the URLâ€¦
 		const params = Object.keys(users).join('&user_id=');
 
 		fetch(ENDPOINT + '?user_id=' + params, { headers: { Authorization: this.token }})
@@ -98,14 +98,14 @@ class Lookup {
 			}
 
 			// Reject the promise for user IDs for which the API don't have returned a response at all.
-			// This should not happens… But a we are not immune to a bug!
+			// This should not happensâ€¦ But a we are not immune to a bug!
 			for (const [u, {res, rej}] of Object.entries(users)) {
 				this.pending_promises.delete(u);
 				rej(new Error('No response was returned by the API'));
 			}
 		})
 		.catch(err => {
-			// If an error happened with the API call, reject the promise for all queried users…
+			// If an error happened with the API call, reject the promise for all queried usersâ€¦
 			for (const [u, {res, rej}] of Object.entries(users)) {
 				this.pending_promises.delete(u);
 				rej(err);
