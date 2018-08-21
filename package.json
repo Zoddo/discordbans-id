@@ -1,0 +1,27 @@
+{
+  "name": "discordbans",
+  "version": "1.0.0",
+  "description": "A node.js package to check users on Discord Bans.",
+  "main": "src/lookup.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Zoddo/discordbans.git"
+  },
+  "keywords": [
+    "nodejs",
+    "discord",
+    "discordbans"
+  ],
+  "author": "Zoddo <discord-bots@zoddo.fr>",
+  "license": "LGPL-3.0",
+  "bugs": {
+    "url": "https://github.com/Zoddo/discordbans/issues"
+  },
+  "homepage": "https://github.com/Zoddo/discordbans#readme",
+  "dependencies": {
+    "node-fetch": "^2.2.0"
+  }
+}
