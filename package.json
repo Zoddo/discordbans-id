@@ -1,6 +1,6 @@
 {
   "name": "discordbans-id",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A node.js package to check users on Discord Bans.",
   "main": "src/lookup.js",
   "scripts": {
