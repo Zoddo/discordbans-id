@@ -11,7 +11,9 @@ $ npm install --save discordbans-id
 const Lookup = require('discordbans-id').Lookup;
 const dbans = new Lookup('your_dban_token');
 
-dbans.lookup('123456789123456789').then(r => console.log(r));
+dbans.lookup('123456789123456789').then(r => {
+    console.log(r);
+}).catch(err => console.error(err));
 ```
 Console output:
 ```js
@@ -20,6 +22,33 @@ Console output:
   case_id: '9999',
   reason: 'THIS IS A VIRTUAL DBANS API TESTING ACCOUNT',
   proof: 'https://yourmom-is.gae' }
+```
+
+### Scan a whole server
+*This example is using [Eris](https://abal.moe/Eris/) as a Discord library.*
+
+```js
+const Eris = require('eris');
+const Lookup = require('discordbans-id').Lookup;
+
+const bot = new Eris('your_discord_bot_token', {getAllUsers: true});
+const dbans = new Lookup('your_dban_token');
+
+bot.once('messageCreate', msg => {
+    if (msg.content === '!scan') {
+        for (const [id, m] of msg.channel.guild.members) {
+            // Here, we call dbans.lookup() in a loop.
+            // The library will automatically concat all requests and do bulk lookups. It's magic :-)
+            dbans.lookup(id).then(r => {
+                if (r.banned) {
+                    // The user is listed on Discord Bans. You can do what you want.
+                }
+            }).catch(err => console.log(err));
+        }
+    }
+});
+
+bot.connect();
 ```
 
 ## Documentation
@@ -33,7 +62,7 @@ new Lookup(token[, options]);
 Argument            |   Type   | Description
 ------------------- | -------- | -----------
 `token`             | string   | Your bans.discord.id API token. To get one, DM `!token` to Discord Bans#0269.
-`options.interval`  | number   | [Optional=1000] The interval between to API requests in ms. Default to 1000ms (1 sec).
+`options.interval`  | number   | [Optional=1000] The interval between two API requests in ms. Default to 1000ms (1 sec).
 `options.cacheSize` | number   | [Optional=-1] The maximum size of the internal cache. When the cache is full, oldest elements are removed. Set to `0` to disable the cache. Default to `-1` (unlimited).
 `options.cacheLife` | number   | [Optional=3600000] The maximum lifetime of a cached entry. Default to 3600000ms (1 hour).
 

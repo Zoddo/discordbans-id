@@ -7,7 +7,7 @@ const MAX_USERS = 99; // The API accepts up to 99 users per call
 class Lookup {
 	constructor(token, {interval, cacheSize, cacheLife} = {}) {
 		Object.defineProperty(this, 'token', {value: token, enumerable: false, writable: true});
-		this.interval = interval || 1000; // 1 sec - The API is currently not rate-lmited, but, be safe, and don't make more than 60 requests per minute.
+		this.interval = interval || 1000; // 1 sec - The API is currently not rate-limited, but, be safe and don't make more than 60 requests per minute.
 		this.cacheSize = typeof cacheSize === 'undefined' ? -1 : cacheSize;
 		this.cacheLife = cacheLife || 3600000; // 1 hour
 
@@ -55,7 +55,7 @@ class Lookup {
 		if (this.timeout !== null || this.queue.length === 0) return;
 
 		if (this.last_call + this.interval < Date.now()) {
-			// We cane excute the request now. It will be executed at the end of the event loop
+			// We can excute the request now. It will be executed at the end of the event loop
 			this.timeout = setImmediate(() => this.execute());
 		} else {
 			// The last request is too recent. Let's wait a bit before executing the request…
@@ -83,7 +83,7 @@ class Lookup {
 		.then(json => {
 			// Finished
 			for (const result of json) {
-				// A user can have multiple cases. Currently, we return only one case, let's ignore the other ones.
+				// A user can have multiple cases. Currently, we return only one case and ignore the other ones.
 				if (typeof users[result.user_id] === 'undefined') {
 					continue;
 				}
