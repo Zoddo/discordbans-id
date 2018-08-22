@@ -1,4 +1,7 @@
 # discordbans-id
+
+[![Greenkeeper badge](https://badges.greenkeeper.io/Zoddo/discordbans-id.svg)](https://greenkeeper.io/)
+
 A node.js package to check users on Discord Bans.
 
 ## Installation
