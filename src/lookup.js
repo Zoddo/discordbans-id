@@ -51,11 +51,11 @@ class Lookup {
 	}
 
 	check() {
-		// A futur execution is already pending
+		// A future execution is already pending
 		if (this.timeout !== null || this.queue.length === 0) return;
 
 		if (this.last_call + this.interval < Date.now()) {
-			// We can excute the request now. It will be executed at the end of the event loop
+			// We can execute the request now. It will be executed at the end of the event loop
 			this.timeout = setImmediate(() => this.execute());
 		} else {
 			// The last request is too recent. Let's wait a bit before executing the request…
@@ -89,7 +89,7 @@ class Lookup {
 				}
 
 				// We convert the banned string into a boolean. Easier to use in conditions.
-				result.banned = (result.banned == '0') ? false : true;
+				result.banned = result.banned != '0';
 				users[result.user_id].res(result);
 				this.put_cache(result);
 
