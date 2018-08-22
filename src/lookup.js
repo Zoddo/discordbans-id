@@ -8,7 +8,7 @@ class Lookup {
 	constructor(token, {interval, cacheSize, cacheLife} = {}) {
 		Object.defineProperty(this, 'token', {value: token, enumerable: false, writable: true});
 		this.interval = interval || 1000; // 1 sec - The API is currently not rate-limited, but, be safe and don't make more than 60 requests per minute.
-		this.cacheSize = typeof cacheSize === 'undefined' ? -1 : cacheSize;
+		this.cacheSize = cacheSize || 0;
 		this.cacheLife = cacheLife || 3600000; // 1 hour
 
 		this.queue = [];
